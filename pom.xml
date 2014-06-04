@@ -46,6 +46,16 @@
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
 		</dependency>
+		<dependency>
+			<groupId>cc.pp.study</groupId>
+			<artifactId>analyzer-ik</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -93,7 +103,7 @@
 				<version>2.4</version>
 				<configuration>
 					<excludes>
-						<exclude>data_db.properties</exclude>
+						<exclude>log4j.properties</exclude>
 					</excludes>
 				</configuration>
 			</plugin>

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mainClass=zx.soft.navie.bayes.NavieBayesDriver
+mainClass=zx.soft.navie.bayes.driver.NavieBayesDriver
 
 # resolve links - $0 may be a softlink
 PRG="$0"

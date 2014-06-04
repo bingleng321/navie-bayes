@@ -3,10 +3,11 @@ package zx.soft.navie.bayes.driver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import zx.soft.navie.bayes.test.NavieBayesDemo;
+import zx.soft.navie.bayes.simple.NavieBayesSimple;
 
 /**
  * 驱动类
+ * @author zhumm
  *
  */
 public class NavieBayesDriver {
@@ -26,9 +27,9 @@ public class NavieBayesDriver {
 		System.arraycopy(args, 1, leftArgs, 0, leftArgs.length);
 
 		switch (args[0]) {
-		case "avieBayesDemo":
-			logger.info("bayes.....： ");
-			NavieBayesDemo.main(leftArgs);
+		case "navieBayesSimple":
+			logger.info("简单的Navie Bayes实现： ");
+			NavieBayesSimple.main(leftArgs);
 			break;
 		default:
 			return;

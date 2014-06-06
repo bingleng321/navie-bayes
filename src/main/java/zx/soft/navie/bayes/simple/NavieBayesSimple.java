@@ -120,7 +120,7 @@ public class NavieBayesSimple {
 		// 全部文本数目
 		double totalNumOfSample = trainDataFactory.totalNumOfSample();
 		// 再乘以先验概率(全部文本数目比上当前类别的文本数目)
-		probability *= numOfSampleInCate / totalNumOfSample;
+		probability *= (numOfSampleInCate + 1) / (totalNumOfSample + 1);
 		return probability;
 	}
 

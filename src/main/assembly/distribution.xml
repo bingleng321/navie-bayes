@@ -8,8 +8,8 @@
 		<format>tar.gz</format>
 	</formats>
 	<baseDirectory>${project.artifactId}</baseDirectory>
-	<fileSets>
 
+	<fileSets>
 		<fileSet>
 			<directory>src/main/resources</directory>
 			<includes>
@@ -37,11 +37,11 @@
 			<filtered>true</filtered>
 		</fileSet>
 	</fileSets>
-	
+
 	<dependencySets>
 		<dependencySet>
 			<outputDirectory>/lib</outputDirectory>
 		</dependencySet>
 	</dependencySets>
-	
+
 </assembly>

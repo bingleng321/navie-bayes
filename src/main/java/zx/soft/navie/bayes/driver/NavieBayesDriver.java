@@ -3,6 +3,8 @@ package zx.soft.navie.bayes.driver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import zx.soft.navie.bayes.data.DataProcessing;
+import zx.soft.navie.bayes.mapreduce.NavieBayesDistribute;
 import zx.soft.navie.bayes.simple.NavieBayesSimple;
 
 /**
@@ -31,6 +33,13 @@ public class NavieBayesDriver {
 			logger.info("简单的Navie Bayes实现： ");
 			NavieBayesSimple.main(leftArgs);
 			break;
+		case "NavieBayesDistribute":
+			logger.info("分布式Navie Bayes实现： ");
+			NavieBayesDistribute.main(leftArgs);
+			break;
+		case "dataProcessing":
+			logger.info("分布式 Navie Bayes 前期数据处理");
+			DataProcessing.main(leftArgs);
 		default:
 			return;
 		}

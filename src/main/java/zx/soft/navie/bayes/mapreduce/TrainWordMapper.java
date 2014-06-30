@@ -17,7 +17,7 @@ public class TrainWordMapper extends Mapper<LongWritable, Text, Text, Text> {
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws InterruptedException, IOException {
 
-		String[] words = value.toString().split("\\s+");
+		String[] words = value.toString().split("\\s+"); //正则  空格分开
 		Vector<String> cates = NavieBayesDistribute.tokenizeLabels(words[0]);
 		Vector<String> text = NavieBayesDistribute.tokenizeDoc(words);
 

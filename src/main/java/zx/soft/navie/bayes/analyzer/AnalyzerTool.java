@@ -40,6 +40,9 @@ public class AnalyzerTool {
 		for (String str : temp) {
 			result.append(str).append(splitToken);
 		}
+		if (result.toString().length() == 0) {
+			return "";
+		}
 		return result.toString().substring(0, result.lastIndexOf(splitToken));
 	}
 

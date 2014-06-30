@@ -8,7 +8,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 /**
  * Performs the reduce-side join on the model and test data. 
- *
+ * 输出格式：word——>catei:n1::catej:n2::catek:n3 ... 文档ID1,类别列表::文档ID2，文档列表...
  */
 public class JoinReducer extends Reducer<Text, Text, Text, Text> {
 

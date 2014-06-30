@@ -1,13 +1,20 @@
 package zx.soft.navie.bayes.mapreduce;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Vector;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.filecache.DistributedCache;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -33,11 +40,11 @@ public class NavieBayesDistribute extends Configured implements Tool {
 	}
 
 	// 文档数
-	public static final String TOTAL_DOCS = "edu.cmu.bigdata.shannon.total_docs";
+	public static final String TOTAL_DOCS = "total_docs";
 	// 词数
-	public static final String UNIQUE_WORDS = "edu.cmu.bigdata.shannon.vocabulary_size";
+	public static final String UNIQUE_WORDS = "vocabulary_size";
 	// 类别数
-	public static final String UNIQUE_LABELS = "edu.cmu.bigdata.shannon.unique_labels";
+	public static final String UNIQUE_LABELS = "unique_lab";
 
 	/**
 	 * 将一个文档下的词汇数组转换成向量
@@ -47,7 +54,6 @@ public class NavieBayesDistribute extends Configured implements Tool {
 	public static Vector<String> tokenizeDoc(String[] words) {
 		Vector<String> tokens = new Vector<String>();
 		for (int i = 1; i < words.length; i++) {
-			words[i] = words[i].replaceAll("\\W", "");
 			if (words[i].length() > 0) {
 				tokens.add(words[i]);
 			}
@@ -94,7 +100,7 @@ public class NavieBayesDistribute extends Configured implements Tool {
 		Path traindata = new Path(conf.get("train"));
 		Path testdata = new Path(conf.get("test"));
 		Path output = new Path(conf.get("output"));
-		int numReducers = conf.getInt("reducers", 10);
+		int numReducers = conf.getInt("reducers", 8);
 		Path distCache = new Path(output.getParent(), "cache");
 		Path model = new Path(output.getParent(), "model");
 		Path joined = new Path(output.getParent(), "joined");
@@ -178,7 +184,7 @@ public class NavieBayesDistribute extends Configured implements Tool {
 			return 1;
 		}
 
-		/*// Job 3: 分类阶段
+		// Job 3: 分类阶段
 		NavieBayesDistribute.delete(classifyConf, output);
 
 		// 添加到分布式缓存
@@ -231,9 +237,6 @@ public class NavieBayesDistribute extends Configured implements Tool {
 
 		System.out.println(String.format("%s/%s, accuracy %.2f", correct, total,
 				((double) correct / (double) total) * 100.0));
-		return 0;
-		}*/
-
 		return 0;
 	}
 

@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 
 import zx.soft.navie.bayes.db.DbRecordToHDFS;
 import zx.soft.navie.bayes.mapreduce.NavieBayesDistribute;
-import zx.soft.navie.bayes.pretreatment.DataProcessing;
 import zx.soft.navie.bayes.simple.NavieBayesSimple;
+import zx.soft.navie.bayes.traindatapretreatment.TrainDataProcessing;
 
 /**
  * 驱动类
@@ -38,9 +38,9 @@ public class NavieBayesDriver {
 			logger.info("分布式Navie Bayes实现： ");
 			NavieBayesDistribute.main(leftArgs);
 			break;
-		case "dataProcessing":
-			logger.info("分布式 Navie Bayes 前期数据处理");
-			DataProcessing.main(leftArgs);
+		case "trainDataPretreatment":
+			logger.info("分布式 Navie Bayes 训练数据处理、准备");
+			TrainDataProcessing.main(leftArgs);
 		case "dbRecordPretreatmentToHDFS":
 			logger.info("预处理来自于MySQL中的待分类数据");
 			DbRecordToHDFS.main(leftArgs);

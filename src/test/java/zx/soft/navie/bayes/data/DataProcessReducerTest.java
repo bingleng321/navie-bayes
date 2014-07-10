@@ -10,7 +10,7 @@ import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
 import org.junit.Before;
 import org.junit.Test;
 
-import zx.soft.navie.bayes.pretreatment.DataProcessReducer;
+import zx.soft.navie.bayes.traindatapretreatment.TrainDataProcessReducer;
 
 public class DataProcessReducerTest {
 
@@ -18,7 +18,7 @@ public class DataProcessReducerTest {
 
 	@Before
 	public void SetUp() throws Exception {
-		DataProcessReducer dataProcessReducer = new DataProcessReducer();
+		TrainDataProcessReducer dataProcessReducer = new TrainDataProcessReducer();
 		reduceDriver = ReduceDriver.newReduceDriver(dataProcessReducer);
 	}
 

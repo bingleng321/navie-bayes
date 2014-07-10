@@ -1,4 +1,4 @@
-package zx.soft.navie.bayes.pretreatment;
+package zx.soft.navie.bayes.traindatapretreatment;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import org.apache.hadoop.mapreduce.Reducer;
  *
  */
 
-public class DataProcessReducer extends Reducer<LongWritable, Text, NullWritable, Text> {
+public class TrainDataProcessReducer extends Reducer<LongWritable, Text, NullWritable, Text> {
 
 	@Override
 	public void reduce(LongWritable key, Iterable<Text> values, Context context) throws InterruptedException,

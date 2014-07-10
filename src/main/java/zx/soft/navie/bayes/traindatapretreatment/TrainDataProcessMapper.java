@@ -1,4 +1,4 @@
-package zx.soft.navie.bayes.pretreatment;
+package zx.soft.navie.bayes.traindatapretreatment;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ import zx.soft.navie.bayes.analyzer.AnalyzerTool;
  *
  */
 
-public class DataProcessMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
+public class TrainDataProcessMapper extends Mapper<LongWritable, Text, LongWritable, Text> {
 
 	private static final AnalyzerTool analyzerTool = new AnalyzerTool();
 	private static InputSplit inputSplit;

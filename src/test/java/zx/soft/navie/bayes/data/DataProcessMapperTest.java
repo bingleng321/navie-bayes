@@ -6,7 +6,7 @@ import org.apache.hadoop.mrunit.mapreduce.MapDriver;
 import org.junit.Before;
 import org.junit.Test;
 
-import zx.soft.navie.bayes.pretreatment.DataProcessMapper;
+import zx.soft.navie.bayes.traindatapretreatment.TrainDataProcessMapper;
 
 public class DataProcessMapperTest {
 
@@ -14,7 +14,7 @@ public class DataProcessMapperTest {
 
 	@Before
 	public void setUp() {
-		DataProcessMapper mapper = new DataProcessMapper();
+		TrainDataProcessMapper mapper = new TrainDataProcessMapper();
 		mapDriver = MapDriver.newMapDriver(mapper);
 	}
 

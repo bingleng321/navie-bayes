@@ -1,4 +1,4 @@
-package zx.soft.navie.bayes.pretreatment;
+package zx.soft.navie.bayes.traindatapretreatment;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class DataProcessing extends Configured implements Tool {
+public class TrainDataProcessing extends Configured implements Tool {
 
 	/**
 	 * 删除HDFS中的某个目录
@@ -36,15 +36,15 @@ public class DataProcessing extends Configured implements Tool {
 		Configuration conf = getConf();
 		int numReduceTasks = conf.getInt("numReduceTasks", 8);
 
-		Path sourceDataPath = new Path(conf.get("sourceData"));
-		Path dstDataPath = new Path(conf.get("processData"));
+		Path sourceDataPath = new Path(conf.get("sourceTrainData"));
+		Path dstDataPath = new Path(conf.get("pretreatmentTrainData"));
 
-		DataProcessing.delete(conf, dstDataPath);
+		TrainDataProcessing.delete(conf, dstDataPath);
 
-		Job dataProcessJob = new Job(conf, "zx-soft-navie-bayes-dataProcessing");
-		dataProcessJob.setJarByClass(DataProcessing.class);
-		dataProcessJob.setMapperClass(DataProcessMapper.class);
-		dataProcessJob.setReducerClass(DataProcessReducer.class);
+		Job dataProcessJob = new Job(conf, "zx-soft-navie-bayes-trainData-processing");
+		dataProcessJob.setJarByClass(TrainDataProcessing.class);
+		dataProcessJob.setMapperClass(TrainDataProcessMapper.class);
+		dataProcessJob.setReducerClass(TrainDataProcessReducer.class);
 
 		dataProcessJob.setNumReduceTasks(numReduceTasks);
 
@@ -65,7 +65,7 @@ public class DataProcessing extends Configured implements Tool {
 
 	public static void main(String[] args) {
 		try {
-			int exitCode = ToolRunner.run(new DataProcessing(), args);
+			int exitCode = ToolRunner.run(new TrainDataProcessing(), args);
 			System.exit(exitCode);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

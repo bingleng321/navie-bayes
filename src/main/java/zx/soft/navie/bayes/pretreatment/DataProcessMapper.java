@@ -1,4 +1,4 @@
-package zx.soft.navie.bayes.data;
+package zx.soft.navie.bayes.pretreatment;
 
 import java.io.IOException;
 

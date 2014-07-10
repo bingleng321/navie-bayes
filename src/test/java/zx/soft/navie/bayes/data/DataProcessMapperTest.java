@@ -6,6 +6,8 @@ import org.apache.hadoop.mrunit.mapreduce.MapDriver;
 import org.junit.Before;
 import org.junit.Test;
 
+import zx.soft.navie.bayes.pretreatment.DataProcessMapper;
+
 public class DataProcessMapperTest {
 
 	private MapDriver<LongWritable, Text, LongWritable, Text> mapDriver;
@@ -18,10 +20,9 @@ public class DataProcessMapperTest {
 
 	@Test
 	public void test() {
-		mapDriver.withInput(new LongWritable(555), new Text(
-				"俺妈咪现在没事就溜达到万达吃个甜甜圈、冰激凌神马的，老资老清新[神马][咖啡] //@Super-吉吉:他们没拿阿！"));
+		//mapDriver.withInput(new LongWritable(555), new Text(
+		//	"俺妈咪现在没事就溜达到万达吃个甜甜圈、冰激凌神马的，老资老清新[神马][咖啡] //@Super-吉吉:他们没拿阿！"));
 		//mapDriver.withOutput(key, val)
 		//not finished;
 	}
-
 }

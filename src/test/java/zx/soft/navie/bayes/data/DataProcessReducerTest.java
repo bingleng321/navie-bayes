@@ -10,6 +10,8 @@ import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
 import org.junit.Before;
 import org.junit.Test;
 
+import zx.soft.navie.bayes.pretreatment.DataProcessReducer;
+
 public class DataProcessReducerTest {
 
 	ReduceDriver<LongWritable, Text, NullWritable, Text> reduceDriver;

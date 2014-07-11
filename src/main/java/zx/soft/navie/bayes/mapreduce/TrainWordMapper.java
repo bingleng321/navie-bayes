@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 /**
  * 读取输入文件数据，输出为word——>cate格式。 
- * @author wgybzb
+ * @author zhumm
  *
  */
 public class TrainWordMapper extends Mapper<LongWritable, Text, Text, Text> {

@@ -28,7 +28,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 /**
  * 配置Naive Bayes的训练和测试作业
- * @author wgybzb
+ * @author zhu mm
  *
  */
 public class NavieBayesDistribute extends Configured implements Tool {
@@ -101,9 +101,9 @@ public class NavieBayesDistribute extends Configured implements Tool {
 		Path testdata = new Path(conf.get("test"));
 		Path output = new Path(conf.get("output"));
 		int numReducers = conf.getInt("reducers", 8);
-		Path distCache = new Path(output.getParent(), "cache");
-		Path model = new Path(output.getParent(), "model");
-		Path joined = new Path(output.getParent(), "joined");
+		Path distCache = new Path(output.getParent(), "my-cache");
+		Path model = new Path(output.getParent(), "my-model");
+		Path joined = new Path(output.getParent(), "my-joined");
 
 		// Job 1a: 提取每个词语的信息
 		NavieBayesDistribute.delete(conf, model);

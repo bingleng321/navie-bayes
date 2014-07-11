@@ -7,7 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 /**
  * 处理模型，基本的IdentityMapper。
- * @author wgybzb
+ * @author zhu mm
  *
  */
 public class JoinModelMapper extends Mapper<Text, Text, Text, Text> {

@@ -10,7 +10,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 /**
  * 统计每个类别对应的词数，即：cate——>size(words)
- * @author wgybzb
+ * @author zhu mm
  *
  */
 public class TrainCateMapper extends Mapper<LongWritable, Text, Text, IntWritable> {

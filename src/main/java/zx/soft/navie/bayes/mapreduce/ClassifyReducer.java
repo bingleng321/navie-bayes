@@ -22,7 +22,7 @@ import org.apache.hadoop.mapreduce.Reducer;
  * 输入：
  * 		文档ID——><cate:wordProbability>列表::真实类别
  * 
- * @author 
+ * @author zhu mm
  *
  */
 public class ClassifyReducer extends Reducer<LongWritable, Text, LongWritable, IntWritable> {
@@ -60,6 +60,7 @@ public class ClassifyReducer extends Reducer<LongWritable, Text, LongWritable, I
 	}
 
 	@Override
+	//文档ID——><cate:wordProbability>列表::真实类别
 	public void reduce(LongWritable key, Iterable<Text> values, Context context) throws InterruptedException,
 			IOException {
 
@@ -96,7 +97,9 @@ public class ClassifyReducer extends Reducer<LongWritable, Text, LongWritable, I
 					- Math.log(totalDocuments + (NavieBayesDistribute.ALPHA * uniqueCates));
 			double totalProb = probabilities.get(label).doubleValue() + prior;
 			if (totalProb > bestProb) {
+				//记录预测的类别
 				bestLabel = label;
+				//该文档的最大贝叶斯概率
 				bestProb = totalProb;
 			}
 		}

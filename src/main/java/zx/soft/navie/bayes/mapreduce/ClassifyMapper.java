@@ -17,8 +17,9 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 /**
  * 计算每个类别下的每个词的概率
+ * 输入格式：word——>catei:n1 catej:n2 catek:n3 ...::文档ID1,类别列表::文档ID2，文档列表...
  * 输出文档ID——><cate:wordProbability>列表::真实类别
- * @author wgybzb
+ * @author zhu mm
  */
 public class ClassifyMapper extends Mapper<Text, Text, LongWritable, Text> {
 
@@ -28,9 +29,11 @@ public class ClassifyMapper extends Mapper<Text, Text, LongWritable, Text> {
 	/**
 	 * 从分布式缓存中 distcache 计算该单词的类型和单词数
 	 * HashMap<cate,count>
+	 * 每个类别下的单词数
 	 */
 	@Override
 	protected void setup(Context context) throws IOException {
+		//自定义计数器读取
 		wordsSize = context.getConfiguration().getLong(NavieBayesDistribute.UNIQUE_WORDS, 100);
 		wordsUnderCate = new HashMap<String, Integer>();
 
@@ -56,6 +59,7 @@ public class ClassifyMapper extends Mapper<Text, Text, LongWritable, Text> {
 		}
 	}
 
+	//word——>catei:n1 catej:n2 catek:n3 ...::文档ID1,类别列表::文档ID2，文档列表...
 	@Override
 	public void map(Text key, Text value, Context context) throws InterruptedException, IOException {
 
@@ -93,7 +97,7 @@ public class ClassifyMapper extends Mapper<Text, Text, LongWritable, Text> {
 			}
 		}
 
-		// 循环每个类别, 对于每个文档ID，计算词语在类别下面的概率
+		// 对于每个文档ID，循环每个类别,计算词语在类别下面的概率
 		for (Long docId : trueLabels.keySet()) {
 			StringBuilder probs = new StringBuilder();
 			for (String label : wordsUnderCate.keySet()) {

@@ -8,7 +8,8 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 /**
  * Performs the reduce-side join on the model and test data. 
- * 输出格式：word——>catei:n1::catej:n2::catek:n3 ... 文档ID1,类别列表::文档ID2，文档列表...
+ * 输出格式：word——>catei:n1 catej:n2 catek:n3 ...::文档ID1,类别列表::文档ID2，文档列表...
+ * @author zhumm
  */
 public class JoinReducer extends Reducer<Text, Text, Text, Text> {
 
@@ -20,7 +21,7 @@ public class JoinReducer extends Reducer<Text, Text, Text, Text> {
 		for (Text value : values) {
 			String line = value.toString();
 			if (line.contains(":")) {
-				// 构建好的模型数据
+				// 构建好的模型数据  catei:ni
 				modelLine = line;
 			} else {
 				// 包含"文档ID,类别列表"的测试数据

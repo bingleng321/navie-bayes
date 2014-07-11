@@ -8,7 +8,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 /**
  * 统计每个词对应类别及其次数，输出格式word——>catei:n1 catej:n2 catek:n3 ...
- * @author wgybzb
+ * @author zhu mm
  *
  */
 public class TrainWordReducer extends Reducer<Text, Text, Text, Text> {
@@ -29,7 +29,6 @@ public class TrainWordReducer extends Reducer<Text, Text, Text, Text> {
 		for (String cate : counts.keySet()) {
 			outKey.append(String.format("%s:%s ", cate, counts.get(cate).intValue()));
 		}
-
 		// 输出word——>catei:n1 catej:n2 catek:n3 ...
 		context.write(key, new Text(outKey.toString().trim()));
 	}
